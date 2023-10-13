@@ -1,4 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
+using Parking.Contracts.Services;
+using Parking.Services;
 
 namespace Parking;
 
@@ -20,5 +22,11 @@ public static class MauiProgram
 #endif
 
         return builder.Build();
+    }
+
+    public static void AddServices(MauiAppBuilder builder)
+    {
+        builder.Services.AddSingleton<ISettingsService, SettingsService>();
+        builder.Services.AddSingleton<IAuthService, ApiAuthService>();
     }
 }
